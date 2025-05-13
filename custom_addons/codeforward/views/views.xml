@@ -1,0 +1,22 @@
+<odoo>
+
+  <menuitem id="menu_codeforward_root"
+            name="CodeForward"
+            sequence="99"
+  />
+
+  <menuitem id="menu_codeforward_device"
+            name="Devices"
+            sequence="1"
+            parent="menu_codeforward_root"
+            action="action_codeforward_device"
+  />
+
+  <menuitem id="menu_codeforward_device_content"
+            name="Content"
+            sequence="1"
+            parent="menu_codeforward_root"
+            action="action_codeforward_device_content"
+  />
+
+</odoo>

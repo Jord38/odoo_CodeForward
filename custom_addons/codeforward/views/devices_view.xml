@@ -1,0 +1,22 @@
+<odoo>
+    <record id="codeforward.device_view_list" model="ir.ui.view">
+        <field name="name">view.codeforward.device.list.view</field>
+        <field name="model">codeforward.device</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="device_id"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="code"/>
+                <field name="expire_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_codeforward_device" model="ir.actions.act_window">
+        <field name="name">Devices</field>
+        <field name="res_model">codeforward.device</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

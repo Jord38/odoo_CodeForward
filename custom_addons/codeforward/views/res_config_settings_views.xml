@@ -1,0 +1,37 @@
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.codeforward</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="15"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="CodeForward" string="CodeForward" name="codeforward">
+                    <block title="CodeForward Settings"
+                           name="codeforward_settings">
+                        <setting string="CSV Directory Path"
+                                 help="The local path to the directory containing devices.csv and content.csv"
+                                 id="codeforward_csv_directory">
+                            <field name="codeforward_csv_directory" placeholder="/path/to/your/csv/files"/>
+                        </setting>
+                        <setting string="CSV Delimiter"
+                                 help="The delimiter to use in the CSV files (default is comma)."
+                                 id="codeforward_csv_delimiter">
+                            <field name="codeforward_csv_delimiter" placeholder=","/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="codeforward_config_settings_action" model="ir.actions.act_window">
+        <field name="name">CodeForward Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'codeforward'}</field>
+    </record>
+</odoo> 

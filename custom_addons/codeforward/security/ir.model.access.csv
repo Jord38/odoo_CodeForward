@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_device_user,access.codeforward.device,model_codeforward_device,base.group_user,1,1,1,1
+access_content_user,access.codeforward.device.content,model_codeforward_device_content,base.group_user,1,1,1,1

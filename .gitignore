@@ -49,3 +49,7 @@ package.json
 /man/
 /share/
 /src/
+
+
+postgresql/
+venv/

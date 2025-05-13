@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:16
+    user: root
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_DB=postgres
+    restart: always
+    #volumes:
+    #  - ./postgresql:/var/lib/postgresql/data
+    networks:
+      - odoo_network
+
+  odoo18:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: odoo-codeforward:latest
+    depends_on:
+      - db
+    ports:
+      - "10017:8069"
+      - "20017:8072" # live chat
+    tty: true
+    command: --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/custom-addons
+    volumes:
+      - ./csv_files:/mnt/csv_files
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+    networks:
+      - odoo_network
+    restart: always
+
+networks:
+  odoo_network:
+    driver: bridge
