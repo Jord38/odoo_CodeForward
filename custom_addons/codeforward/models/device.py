@@ -78,7 +78,8 @@ class Device(models.Model):
         else:
             try:
                 with open(devices_path, mode='r') as file:
-                    reader = csv.reader(file, delimiter=delimiter)
+                    reader = csv.reader(file, delimiter=delimiter, quotechar='"', quoting=csv.QUOTE_ALL, 
+                                      doublequote=True, skipinitialspace=True)
 
                     # Process rows
                     for i, row in enumerate(reader):
@@ -165,13 +166,14 @@ class Device(models.Model):
 
         # Process content
         _logger.info(f"[CSV Import] Attempting to process content file: {content_path}")
-        if not os.path.exists(devices_path):
+        if not os.path.exists(content_path):
             _logger.error(f"[CSV Import] Content file not found at: {content_path}")
             raise UserError(f"Required content file not found: {content_path}")
         else:
             try:
                 with open(content_path, mode='r') as file:
-                    reader = csv.reader(file, delimiter=delimiter)
+                    reader = csv.reader(file, delimiter=delimiter, quotechar='"', quoting=csv.QUOTE_ALL, 
+                                      doublequote=True, skipinitialspace=True)
 
                     # Process rows
                     for i, row in enumerate(reader):
@@ -232,7 +234,6 @@ class Device(models.Model):
                                 'expire_date': expire_date,
                                 'state': state,
                             }
-
 
                             _logger.info(f"[CSV Import] Creating new content (ID: {content_id}, Device: {device_id}) from content.csv line {line_num}.")
                             try:
